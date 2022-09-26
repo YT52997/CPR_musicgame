@@ -1,0 +1,25 @@
+#:import menu menu
+
+MainWidget:
+
+<MainWidget>:
+    canvas.before:
+    # canvas displayed before others
+        Rectangle:
+            size: self.size
+            source: 'images/aquarium_horizontal.jpg'
+    canvas:
+        Rectangle:
+            size: (self.SHIP_WIDTH*self.width, (self.SHIP_HEIGHT+0.03)*self.height)
+            pos: self.center_x-self.SHIP_WIDTH*self.width/2, (self.SHIP_BASE_Y-0.02)*self.height
+            source: 'images/shark_cut.png'
+
+    menu_widget: menu_widget  # declare and define in MainWidget
+    perspective_point_x: root.width/2
+    perspective_point_y: root.height*0.75
+    MenuWidget:
+        id: menu_widget
+    Label:
+        text: "BPM: " + str(root.BPM) + "\n\n" + root.time_txt + "\n" + root.score_txt
+        size_hint: .2, .2
+        pos_hint: {"x": 0.1, "top": 1}
